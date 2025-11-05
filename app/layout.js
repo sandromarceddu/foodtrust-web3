@@ -1,7 +1,7 @@
 import './globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { I18nProvider } from '../components/I18nProvider';
+import { LanguageProvider } from '@/LanguageContext';
 
 export const metadata = {
   title: 'Blockchain Food Trust',
@@ -12,11 +12,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="it">
       <body>
-        <I18nProvider>
+        <LanguageProvider>
           <Header />
           <main>{children}</main>
           <Footer />
-        </I18nProvider>
+        </LanguageProvider>
       </body>
     </html>
   );
