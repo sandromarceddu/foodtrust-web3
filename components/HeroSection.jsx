@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useI18n } from './I18nProvider';
+import { useLanguage } from '../LanguageContext';
+import { translations } from '../translations';
 
 export default function HeroSection() {
   const { t } = useI18n();
