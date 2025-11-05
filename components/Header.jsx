@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useLanguage } from "@/LanguageContext";
-import { translations } from "@/translations";
+import { useLanguage } from '../LanguageContext';
+import { translations } from '../translations';
 
 export default function Header() {
   const { language, setLanguage } = useLanguage();
