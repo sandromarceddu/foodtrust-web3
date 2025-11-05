@@ -9,18 +9,17 @@ import { translations } from "../translations";
 export default function Header() {
   const { language, setLanguage } = useLanguage();
   const t = translations[language].menu;
-
   const [open, setOpen] = useState(false);
 
   return (
     <header className="w-full shadow-sm bg-white fixed top-0 left-0 z-50">
       <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-        {/* ✅ LOGO REALE */}
+        {/* ✅ LOGO */}
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/logo.png"
-            alt="Blockchain Food Trust Logo"
+            alt="Logo Blockchain Food Trust"
             width={45}
             height={45}
             priority
@@ -30,7 +29,6 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* MENU DESKTOP */}
         <div className="hidden md:flex space-x-8 text-lg font-bold">
           <Link href="/progetto">{t.progetto}</Link>
           <Link href="/prodotti">{t.prodotti}</Link>
@@ -39,7 +37,6 @@ export default function Header() {
           <Link href="/contatti">{t.contatti}</Link>
         </div>
 
-        {/* LINGUA */}
         <select
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
@@ -49,7 +46,6 @@ export default function Header() {
           <option value="en">EN</option>
         </select>
 
-        {/* MOBILE HAMBURGER */}
         <button
           className="md:hidden flex flex-col space-y-1"
           onClick={() => setOpen(!open)}
