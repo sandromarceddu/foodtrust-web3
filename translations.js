@@ -8,10 +8,13 @@ export const translations = {
       contatti: "Contatti",
     },
     hero: {
-      titolo: "La blockchain al servizio dell’autenticità alimentare italiana",
-      descrizione: "Tracciabilità, trasparenza e tutela del Made in Italy.",
-      progetto: "Scopri il progetto",
-      verifica: "Verifica un prodotto"
+      title: "La blockchain al servizio dell’autenticità alimentare italiana",
+      subtitle: "Tracciabilità, trasparenza e tutela del Made in Italy.",
+      ctaProject: "Scopri il progetto",
+      ctaVerify: "Verifica un prodotto",
+    },
+    footer: {
+      diritti: "© 2025 Blockchain Food Trust — Tutti i diritti riservati",
     }
   },
 
@@ -24,10 +27,13 @@ export const translations = {
       contatti: "Contact",
     },
     hero: {
-      titolo: "Blockchain for the authenticity of Italian food",
-      descrizione: "Traceability, transparency and protection of Made in Italy.",
-      progetto: "Learn more",
-      verifica: "Verify a product"
+      title: "Blockchain for the authenticity of Italian food",
+      subtitle: "Traceability, transparency and protection of Made in Italy.",
+      ctaProject: "Learn more",
+      ctaVerify: "Verify a product",
+    },
+    footer: {
+      diritti: "© 2025 Blockchain Food Trust — All rights reserved",
     }
   }
 };
