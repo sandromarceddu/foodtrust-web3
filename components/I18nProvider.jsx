@@ -1,31 +1,81 @@
 'use client';
-import { createContext, useContext, useEffect, useState } from 'react';
-import it from '../i18n/it.json';
-import en from '../i18n/en.json';
 
-const I18nContext = createContext();
+import { createContext, useContext, useMemo, useEffect, useState } from 'react';
 
-export function I18nProvider({ children }) {
-  const [lang, setLang] = useState('it');
-  const dicts = { it, en };
-  const t = dicts[lang];
+// 🔤 Dizionario interno (niente import esterni)
+const messages = {
+  it: {
+    menu: {
+      progetto: "Progetto",
+      prodotti: "Prodotti",
+      territori: "Territori",
+      verifica: "Verifica Origine",
+      contatti: "Contatti",
+    },
+    hero: {
+      title: "La blockchain al servizio dell’autenticità alimentare italiana",
+      subtitle: "Tracciabilità, trasparenza e tutela del Made in Italy.",
+      ctaProject: "Scopri il progetto",
+      ctaVerify: "Verifica un prodotto",
+    },
+    footer: {
+      diritti: "© Blockchain Food Trust — Tutti i diritti riservati",
+    },
+  },
+  en: {
+    menu: {
+      progetto: "Project",
+      prodotti: "Products",
+      territori: "Territories",
+      verifica: "Verify Origin",
+      contatti: "Contact",
+    },
+    hero: {
+      title: "Blockchain for the authenticity of Italian food",
+      subtitle: "Traceability, transparency and protection of Made in Italy.",
+      ctaProject: "Learn more",
+      ctaVerify: "Verify a product",
+    },
+    footer: {
+      diritti: "© Blockchain Food Trust — All rights reserved",
+    },
+  },
+};
 
-  useEffect(() => {
-    const saved = typeof window !== 'undefined' ? localStorage.getItem('bft-lang') : null;
-    if (saved === 'it' || saved === 'en') setLang(saved);
-  }, []);
+const I18nCtx = createContext(null);
 
-  const toggle = () => {
-    const next = lang === 'it' ? 'en' : 'it';
-    setLang(next);
-    if (typeof window !== 'undefined') localStorage.setItem('bft-lang', next);
-  };
-
-  return (
-    <I18nContext.Provider value={{ lang, t, toggle }}>
-      {children}
-    </I18nContext.Provider>
-  );
+// utility per leggere chiavi “a.b.c”
+function getByPath(obj, path) {
+  return path.split('.').reduce((acc, k) => (acc && acc[k] !== undefined ? acc[k] : undefined), obj);
 }
 
-export const useI18n = () => useContext(I18nContext);
+export function I18nProvider({ children }) {
+  const [locale, setLocale] = useState('it');
+
+  // persistenza semplice
+  useEffect(() => {
+    const saved = typeof window !== 'undefined' ? window.localStorage.getItem('locale') : null;
+    if (saved && (saved === 'it' || saved === 'en')) setLocale(saved);
+  }, []);
+  useEffect(() => {
+    if (typeof window !== 'undefined') window.localStorage.setItem('locale', locale);
+  }, [locale]);
+
+  const t = useMemo(() => {
+    return (key) => {
+      const val = getByPath(messages[locale], key);
+      return val ?? key; // fallback: mostra la chiave se mancante
+    };
+  }, [locale]);
+
+  const value = useMemo(() => ({ locale, setLocale, t }), [locale, t]);
+
+  return <I18nCtx.Provider value={value}>{children}</I18nCtx.Provider>;
+}
+
+// Hook da usare nei componenti client
+export function useI18n() {
+  const ctx = useContext(I18nCtx);
+  if (!ctx) throw new Error('useI18n must be used within <I18nProvider>');
+  return ctx;
+}
