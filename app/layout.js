@@ -1,7 +1,7 @@
 import './globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { LanguageProvider } from '@/LanguageContext';
+import { LanguageProvider } from '../LanguageContext';
 
 export const metadata = {
   title: 'Blockchain Food Trust',
