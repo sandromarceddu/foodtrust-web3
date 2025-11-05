@@ -1,0 +1,52 @@
+{
+  "nav": {
+    "home": "Home",
+    "project": "Progetto",
+    "products": "Prodotti",
+    "regions": "Territori",
+    "verify": "Verifica origine",
+    "contact": "Contatti",
+    "lang": "EN"
+  },
+  "hero": {
+    "title": "La blockchain al servizio dell’autenticità alimentare italiana.",
+    "subtitle": "Trasparenza e tracciabilità dal produttore al consumatore.",
+    "ctaProject": "Scopri il progetto",
+    "ctaVerify": "Verifica un prodotto"
+  },
+  "how": {
+    "title": "Come funziona",
+    "sub": "Tre passaggi semplici e verificabili da tutti.",
+    "steps": [
+      {
+        "title": "Raccolta dati",
+        "desc": "I produttori inseriscono i dati del lotto e i documenti."
+      },
+      {
+        "title": "Registrazione su blockchain",
+        "desc": "Creiamo un'impronta digitale immutabile del lotto."
+      },
+      {
+        "title": "Verifica pubblica",
+        "desc": "Chiunque può verificare via QR o codice."
+      }
+    ]
+  },
+  "products": {
+    "title": "Prodotti tracciati",
+    "sub": "Esempi dimostrativi disponibili nel network.",
+    "viewAll": "Vai ai prodotti"
+  },
+  "regions": {
+    "title": "Territori e tradizioni",
+    "sub": "Esplora per regione l’eccellenza italiana.",
+    "viewAll": "Scopri i territori"
+  },
+  "cta": {
+    "title": "Verifica l’autenticità di un prodotto",
+    "button": "Vai alla verifica"
+  },
+  "footer": {
+    "rights": "© 2025 Blockchain Food Trust. Tutti i diritti riservati."
+  }
+}
